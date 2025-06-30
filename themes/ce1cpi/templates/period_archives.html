@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}Archivos por {{ period | reverse | join(' ') }} | {{ SITENAME }}{% endblock %}
+
+{% block content %}
+<section class="period-archives">
+    <div class="container">
+        <div class="section-title">
+            <h2>Archivos para {{ period | reverse | join(' ') }}</h2>
+        </div>
+        
+        <ul class="archives-list">
+            {% for article in dates %}
+            <li>
+                <span class="date">{{ article.locale_date }}</span>
+                <a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</section>
+{% endblock content %}

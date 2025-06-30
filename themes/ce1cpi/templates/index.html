@@ -1,0 +1,185 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <!-- Hero Section -->
+    <section class="hero" id="inicio">
+        <div class="container">
+            <h2>Comunicando a la Región de Atacama</h2>
+            <p>Somos un club de radioaficionados dedicados a promover las comunicaciones de emergencia, experimentación técnica y servicio a la comunidad de Copiapó.</p>
+            <a href="#contacto" class="btn">Únete a nuestro club</a>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section class="blog-section" id="blog">
+        <div class="container">
+            <div class="section-title">
+                <h2>Últimas Actividades</h2>
+            </div>
+            <div class="posts-grid">
+                {% for article in articles_page.object_list %}
+                <article class="post-card">
+                    {% if article.image %}
+                    <div class="post-image">
+                        <img src="{{ SITEURL }}/{{ article.image }}" alt="{{ article.title }}">
+                    </div>
+                    {% endif %}
+                    <div class="post-content">
+                        <div class="post-meta">
+                            <span><i class="far fa-calendar"></i> {{ article.locale_date }}</span>
+                            {% if article.category %}
+                            <span class="post-tag">{{ article.category }}</span>
+                            {% endif %}
+                        </div>
+                        <h3 class="post-title"><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a></h3>
+                        <p class="post-excerpt">{{ article.summary|striptags }}</p>
+                        <a href="{{ SITEURL }}/{{ article.url }}" class="read-more">Leer más <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+                {% endfor %}
+            </div>
+            
+            <!-- Pagination -->
+            {% if articles_page.has_other_pages() %}
+            <div class="pagination">
+                {% if articles_page.has_previous() %}
+                    <a href="{{ SITEURL }}/{{ articles_previous_page.url }}">&laquo; Anterior</a>
+                {% endif %}
+                {% if articles_page.has_next() %}
+                    <a href="{{ SITEURL }}/{{ articles_next_page.url }}">Siguiente &raquo;</a>
+                {% endif %}
+            </div>
+            {% endif %}
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section" id="nosotros">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="{{ SITEURL }}/static/images/about.avif" alt="Radio Club Copiapó">
+                </div>
+                <div class="about-text">
+                    <h3>Sobre Radio Club Copiapó CE1CPI</h3>
+                    <p>Fundado en 1985, el Radio Club Copiapó CE1CPI ha sido un pilar en las comunicaciones de emergencia y un centro de aprendizaje para radioaficionados en la Región de Atacama.</p>
+                    <p>Nuestra misión es promover el uso responsable de las frecuencias de radio, capacitar a nuevos operadores y brindar apoyo en comunicaciones durante emergencias y eventos comunitarios.</p>
+                    
+                    <div class="features">
+                        <div class="feature">
+                            <div class="feature-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div>
+                                <h4>Comunidad Activa</h4>
+                                <p>Más de 50 miembros activos participando en nuestras actividades</p>
+                            </div>
+                        </div>
+                        
+                        <div class="feature">
+                            <div class="feature-icon">
+                                <i class="fas fa-tower-broadcast"></i>
+                            </div>
+                            <div>
+                                <h4>Estaciones Operativas</h4>
+                                <p>3 estaciones completas para entrenamiento y emergencias</p>
+                            </div>
+                        </div>
+                        
+                        <div class="feature">
+                            <div class="feature-icon">
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
+                            <div>
+                                <h4>Capacitación Continua</h4>
+                                <p>Cursos mensuales para operadores de todos los niveles</p>
+                            </div>
+                        </div>
+                        
+                        <div class="feature">
+                            <div class="feature-icon">
+                                <i class="fas fa-hand-holding-heart"></i>
+                            </div>
+                            <div>
+                                <h4>Servicio Comunitario</h4>
+                                <p>Apoyo en más de 20 eventos locales cada año</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contacto">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contáctanos</h2>
+            </div>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Dirección</h4>
+                            <p>Av. Los Carrera 1234, Copiapó, Región de Atacama</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Teléfono</h4>
+                            <p>+56 9 1234 5678</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Email</h4>
+                            <p>contacto@ce1cpi.cl</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Horario de Reuniones</h4>
+                            <p>Viernes: 19:00 - 21:00 hrs</p>
+                            <p>Sábados: 10:00 - 13:00 hrs</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <h3>Envíanos un mensaje</h3>
+                    <form>
+                        <div class="form-group">
+                            <input type="text" placeholder="Nombre completo" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="Correo electrónico" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" placeholder="Teléfono">
+                        </div>
+                        <div class="form-group">
+                            <textarea placeholder="Tu mensaje" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Enviar Mensaje</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock content %}

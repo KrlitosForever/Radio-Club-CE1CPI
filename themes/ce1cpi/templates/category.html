@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}Artículos en {{ category }} | {{ SITENAME }}{% endblock %}
+
+{% block content %}
+<section class="category-posts">
+    <div class="container">
+        <div class="section-title">
+            <h2>Artículos en la categoría: {{ category }}</h2>
+        </div>
+        
+        <div class="posts-grid">
+            {% for article in articles %}
+            <article class="post-card">
+                {% if article.image %}
+                <div class="post-image">
+                    <img src="{{ SITEURL }}/{{ article.image }}" alt="{{ article.title }}">
+                </div>
+                {% endif %}
+                <div class="post-content">
+                    <div class="post-meta">
+                        <span><i class="far fa-calendar"></i> {{ article.locale_date }}</span>
+                        {% if article.category %}
+                        <span class="post-tag">{{ article.category }}</span>
+                        {% endif %}
+                    </div>
+                    <h3 class="post-title"><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a></h3>
+                    <p class="post-excerpt">{{ article.summary|striptags }}</p>
+                    <a href="{{ SITEURL }}/{{ article.url }}" class="read-more">Leer más <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </article>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock content %}
