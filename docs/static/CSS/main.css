@@ -417,6 +417,45 @@ footer {
     margin-bottom: 20px;
 }
 
+.article-footer {
+    background-color: var(--light-gray);
+    color: var(--primary-black); /* O cualquier otro color de texto */
+    padding: 1rem 0;
+}
+
+.article-header {
+  background-color: var(--light-gray);
+  padding: 2rem;
+  border-radius: 8px;
+  color: var(--primary-black); /* O ajusta según tu paleta */
+}
+
+.article-header h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.article-header .post-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  font-size: 0.95rem;
+  color: #555;
+}
+
+.article-header .post-meta i {
+  margin-right: 5px;
+}
+
+.article-header .post-tag {
+  background-color: var(--primary-red);
+  color: var(--white);
+  padding: 2px 8px;
+  border-radius: 5px;
+  font-size: 0.85rem;
+}
+
+
 .social-links {
     display: flex;
     gap: 15px;
